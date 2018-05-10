@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><!-- Mobile Specific Metas -->
+
+    <!-- Title -->
+    <title>Academy</title>
+
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/Favicon.ico"/>
+
+    <!-- CSS Stylesheet -->
+    <link href="css/bootstrap.css" rel="stylesheet"/><!-- bootstrap css -->
+    <link href="css/owl.carousel.css" rel="stylesheet"/><!-- carousel Slider -->
+    <link href="css/font-awesome.css" rel="stylesheet"/><!-- font awesome -->
+    <link href="css/docs.css" rel="stylesheet"/><!--  template structure css -->
+
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,200,300,400,500,700,800,900%7CPT+Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="wapper">
+
+    <div class="quck-nav">
+        <div class="container">
+            <div class="contact-no">
+                <a href="#">Faculty Of Sciences Tunis el Manar</a>
+            </div>
+            <div class="contact-no">
+                <a href="#">+216 97 39 82</a>
+            </div>
+            <div class="contact-no">
+                <a href="#">academy.com</a>
+            </div>
+            <div class="quck-right">
+                <div class="right-link">
+                    <a href="#"></a>
+                </div>
+                <div class="right-link">
+                    <a href="#"></a>
+                </div>
+                <div class="right-link language-select">
+                    <a href="javascript:void(0);">English</a>
+                </div>
+                <div class="right-link">
+                    <a href="login-register.xhtml">Login \ Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="header">
+        <div class="container">
+            <nav id="nav-main">
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <a href="index.html" class="navbar-brand"><img src=
+                                                                               "images/logo.png" alt=""/></a>
+                        <button type="button"
+                                class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse"></button>
+                    </div>
+                    <div class="cart-box">
+                        <a href="cart.html"></a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="index.xhtml">Home</a>
+                            </li>
+                            <li class="active sub-menu">
+                                <a href="quiz-list.xhtml">Quizs</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner inner-page">
+        <div class="banner-img"><img src="images/banner/courses-banner.jpg" alt=""/></div>
+        <div class="page-title">
+            <div class="container">
+                <h1>Quiz List</h1>
+            </div>
+        </div>
+    </section>
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All Quizes</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="courses-view list-view">
+        <div class="container">
+            <div class="filter-row">
+                <div class="search">
+                    <input type="text" placeholder="Search"/>
+                    <input type="submit" value=""/>
+                </div>
+            </div>
+            <c:forEach var="rowEntity" begin="0"  end="#{fn:length(quizController.getQuizes())-1}" step="1" >
+                <h:form>
+            <div class="course-post">
+                <!--<div class="img">-->
+                    <!--<img src="images/courses/courses-img4.jpg" alt=""/>-->
+                    <!--<div class="icon">-->
+                        <!--<a href="#"><img src="images/book-icon.png" alt=""/></a>-->
+                    <!--</div>-->
+                    <!--<div class="price">$23</div>-->
+                <!--</div>-->
+                <div class="info">
+                        <c:choose>
+                            <c:when test="#{quizController.getQuizes()[rowEntity].themeid==0}">
+                                <span class="label label-primary">DataScience</span>
+                            </c:when>
+                            <c:when test="#{quizController.getQuizes()[rowEntity].themeid==1}">
+                                <span class="label label-warning">Java/JEE</span>
+                            </c:when>
+                            <c:when test="#{quizController.getQuizes()[rowEntity].themeid==2}">
+                                <span class="label label-info">C/C++</span>
+                            </c:when>
+                            <c:when test="#{quizController.getQuizes()[rowEntity].themeid==3}">
+                                <span class="label label-success">JavaScript</span>
+                            </c:when>
+                            <c:when test="#{quizController.getQuizes()[rowEntity].themeid==4}">
+                                <span class="label label-danger">Mobile Developement</span>
+                            </c:when>
+                        </c:choose>
+
+                        <h:outputText class="name" value="#{quizController.getQuizes()[rowEntity].quiztitel}"/>
+
+                        <div class="rating">
+                            <div class="fill" style="width:45%"></div>
+                        </div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                         <h:outputText class="product-footer fa fa-hourglass-half" value="#{quizController.getQuizes()[rowEntity].duration}"/>
+
+
+                    <div class="view-btn2">
+                        <h:commandButton class="btn" value="Sumbit" action="#{quizController.viewMore(quizController.getQuizes()[rowEntity].getQuizid())}" >
+                        </h:commandButton>
+                    </div>
+
+                    <!--<div class="view-btn2">-->
+                            <!--<a href="quiz.xhtml" class="btn">view more</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+            </div>
+            </div>
+                </h:form>
+            </c:forEach>
+
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class=
+                                         "col-md-offset-1 col-sm-6 col-md-5 col-xs-6">
+                                <h5>Company</h5>
+                                <ul class="footer-link">
+                                    <li>
+                                        <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact-us.html">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="event.html">Event</a>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="instructor-profile.html">Instructor
+                                            Profile</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class=
+                                         "col-md-offset-1 col-sm-6 col-md-5 col-xs-6">
+                                <h5>Links</h5>
+                                <ul class="footer-link">
+                                    <li>
+                                        <a href="courses-list.html">Quiz List</a>
+                                    </li>
+                                    <li>
+                                        <a href="price-plan.html">Pricing Table</a>
+                                    </li>
+                                    <li>
+                                        <a href="instructors.html">Instructors</a>
+                                    </li>
+                                    <li>
+                                        <a href="forums.html">Forums</a>
+                                    </li>
+                                    <li>
+                                        <a href="faq.html">Faq</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <h5>Contact Us</h5>
+                        <div class="contact-view">
+                            <div class="contact-slide">
+                                <p>76 Woodland Ave. Sherman Drive<br/>
+                                    Fort Walton Beach,Harlingen</p>
+                            </div>
+                            <div class="contact-slide">
+                                <p>+299 97 39 82</p>
+                            </div>
+                            <div class="contact-slide">
+                                <p>(08) 8971 7450</p>
+                            </div>
+                            <div class="contact-slide">
+                                <p><a href=
+                                              "mailTo:academy@info.com">academy@info.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="copy-right">
+                        <p>Copyright © <span class="year">2016</span>
+                            Academy.</p>
+                        <ul class="footer-link">
+                            <li>
+                                <a href="#">Terms and Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="social-media">
+                        <ul>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/owl.carousel.js"></script>
+<script type="text/javascript" src="js/jquery.form-validator.min.js"></script>
+<script type="text/javascript" src="js/placeholder.js"></script>
+<script type="text/javascript" src="js/coustem.js"></script>
+</body>
+</html>
+
